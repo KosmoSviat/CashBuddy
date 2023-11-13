@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+ CashBuddy
+
+  Created by Sviatoslav Samoilov on 21.09.2023.
+  
+*/
+"general" = "General";
+"history" = "history";
+"balance" = "balance";
+"sum" = "sum";
+"refill" = "refill";
+"debit" = "debit";
+"change currency" = "change currency";
+"Category: " = "Category: ";
+"Food" = "Food";
+"Transport" = "Transport";
+"Medicine" = "Medicine";
+"Entertainment" = "Entertainment";
+"Cloth" = "Cloth";
+"Household" = "Household";
+"Rent" = "Rent";
+"Not selected" = "Not selected";
+"statistics" = "statistics";
+"Refill total: " = "Refill total: ";
+"Debit total: " = "Debit total: ";

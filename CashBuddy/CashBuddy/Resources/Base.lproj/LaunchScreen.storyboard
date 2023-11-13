@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5GG-7Y-LON">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5W-ev-YkB">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4b5-ZF-uFa">
+                                        <rect key="frame" x="146.66666666666666" y="376" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="gVk-kn-YK7"/>
+                                            <constraint firstAttribute="height" constant="100" id="mKs-jk-NMg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CashBuddy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kv-qp-bN3">
+                                        <rect key="frame" x="129" y="496" width="135.33333333333337" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0kv-qp-bN3" firstAttribute="centerX" secondItem="U5W-ev-YkB" secondAttribute="centerX" id="3Ih-D2-4bq"/>
+                                    <constraint firstItem="4b5-ZF-uFa" firstAttribute="centerY" secondItem="U5W-ev-YkB" secondAttribute="centerY" id="OLG-Kz-NAR"/>
+                                    <constraint firstItem="0kv-qp-bN3" firstAttribute="top" secondItem="4b5-ZF-uFa" secondAttribute="bottom" constant="20" id="gZn-Zc-fQd"/>
+                                    <constraint firstItem="4b5-ZF-uFa" firstAttribute="centerX" secondItem="U5W-ev-YkB" secondAttribute="centerX" id="nUy-pS-Edn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pDQ-RA-kLb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="U5W-ev-YkB" firstAttribute="trailing" secondItem="pDQ-RA-kLb" secondAttribute="trailing" id="HFM-Qg-PV1"/>
+                            <constraint firstItem="U5W-ev-YkB" firstAttribute="top" secondItem="5GG-7Y-LON" secondAttribute="top" id="LSL-24-jAl"/>
+                            <constraint firstItem="U5W-ev-YkB" firstAttribute="bottom" secondItem="5GG-7Y-LON" secondAttribute="bottom" id="Z3K-5g-9nY"/>
+                            <constraint firstItem="U5W-ev-YkB" firstAttribute="leading" secondItem="pDQ-RA-kLb" secondAttribute="leading" id="yBo-MH-1ZJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="341.33334350585938" height="341.33334350585938"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

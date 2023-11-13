@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+ CashBuddy
+
+  Created by Sviatoslav Samoilov on 21.09.2023.
+  
+*/
+"general" = "главная";
+"history" = "история";
+"balance" = "баланс";
+"sum" = "сумма";
+"refill" = "зачисление";
+"debit" = "списание";
+"change currency" = "выбрать валюту";
+"Category: " = "Категория: ";
+"Food" = "Еда";
+"Transport" = "Транспорт";
+"Medicine" = "Медицина";
+"Entertainment" = "Развлечения";
+"Cloth" = "Одежда";
+"Household" = "Бытовые расходы";
+"Rent" = "Аренда";
+"Not selected" = "Не выбрано";
+"statistics" = "статистика";
+"Refill total: " = "Всего зачислено: ";
+"Debit total: " = "Всего потрачено: ";
