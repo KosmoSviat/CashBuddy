@@ -11,11 +11,7 @@ import SnapKit
 final class TransactionTableViewCell: UITableViewCell {
     
     // MARK: - GUI Variables
-    private lazy var containerCellView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
+    private lazy var containerCellView = UIView()
     private lazy var backgroundCellView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -27,40 +23,27 @@ final class TransactionTableViewCell: UITableViewCell {
         view.layer.shadowRadius = 3
         return view
     }()
-    
-    private lazy var signLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 25)
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var sumLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 25)
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var typePaymentLabel: UIImageView = {
+    private lazy var signLabel = configureLabel(font: .boldSystemFont(ofSize: 25))
+    private lazy var sumLabel = configureLabel(font: .boldSystemFont(ofSize: 25))
+    private lazy var typePaymentImage: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .left
         view.tintColor = .white
         return view
     }()
-    
-    private lazy var categoryTransactionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 16)
-        label.textColor = .white
-        return label
+    private lazy var sumStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        return stack
     }()
-    
-    private lazy var dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 17)
-        label.textColor = .white
-        return label
+    private lazy var categoryTransactionLabel = configureLabel(font: .systemFont(ofSize: 17))
+    private lazy var dateLabel = configureLabel(font: .systemFont(ofSize: 17))
+    private lazy var cellStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = CGFloat(indentValue5)
+        return stack
     }()
     
     // MARK: - Properties
@@ -70,7 +53,6 @@ final class TransactionTableViewCell: UITableViewCell {
     private let cornerRadiusValue: CGFloat = 10
     private var indentValue5 = 5
     private let indentValue10 = 10
-    private let indentValue20 = 20
     private let heightValue = 30
     
     // MARK: - Initialization
@@ -84,20 +66,29 @@ final class TransactionTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methods
+    private func configureLabel(font: UIFont) -> UILabel {
+        let label = UILabel()
+        label.font = font
+        label.textColor = .white
+        label.setContentHuggingPriority(.required, for: .horizontal)
+        return label
+    }
+    
     func configureCell(with transaction: Transaction) {
         signLabel.text = transaction.sign.rawValue
-        sumLabel.text = transaction.sum
-        typePaymentLabel.image = transaction.typePayment == .card ? cardImage : banknoteImage
+        sumLabel.text = "\(transaction.sum) "
+        typePaymentImage.image = transaction.typePayment == .card ? cardImage : banknoteImage
         categoryTransactionLabel.text = "Category: ".localized + "\(transaction.categoryTransaction.rawValue.localized)"
         dateLabel.text = transaction.date.formattedDate()
     }
     
     private func setupUI() {
         selectionStyle = .none
-        backgroundColor = .clear
         
-        addSubviews([backgroundCellView, containerCellView])
-        containerCellView.addSubviews([signLabel, sumLabel, typePaymentLabel, categoryTransactionLabel, dateLabel])
+        addSubview(containerCellView)
+        containerCellView.addSubviews([backgroundCellView, cellStack, sumStack])
+        cellStack.addArrangedSubviews([sumStack, categoryTransactionLabel, dateLabel])
+        sumStack.addArrangedSubviews([signLabel, sumLabel, typePaymentImage])
         
         setupConstraints()
     }
@@ -109,36 +100,11 @@ final class TransactionTableViewCell: UITableViewCell {
         }
         
         backgroundCellView.snp.makeConstraints { make in
-            make.centerY.equalTo(containerCellView.snp.centerY)
-            make.leading.trailing.equalToSuperview().inset(indentValue10)
-            make.height.equalTo(containerCellView.snp.height)
+            make.edges.equalToSuperview()
         }
         
-        signLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(indentValue10)
-        }
-        
-        sumLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(signLabel.snp.centerY)
-            make.leading.equalTo(signLabel.snp.trailing)
-        }
-        
-        typePaymentLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(sumLabel.snp.centerY)
-            make.leading.equalTo(sumLabel.snp.trailing).offset(indentValue10)
-            make.trailing.lessThanOrEqualToSuperview().inset(indentValue10)
-            make.width.height.equalTo(heightValue)
-        }
-        
-        categoryTransactionLabel.snp.makeConstraints { make in
-            make.top.equalTo(signLabel.snp.bottom).offset(indentValue5)
-            make.leading.trailing.equalToSuperview().inset(indentValue10)
-        }
-        
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(categoryTransactionLabel.snp.bottom).offset(indentValue5)
-            make.leading.trailing.equalToSuperview().inset(indentValue10)
-            make.bottom.equalToSuperview().inset(indentValue10)
+        cellStack.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(indentValue10)
         }
     }
 }

@@ -23,21 +23,19 @@ final class TransactionsList {
     }
     var transactionsByDate: [Date: [Transaction]] = [:]
     var sectionDates: [Date] = []
+    var balanceTotal = 0
     var refillTotal = 0
     var debitTotal = 0
-    var balanceTotal = 0
     
     // MARK: - Methods
     func getTransactions() {
         transactions = TransactionPersistent.fetchAll()
         transactions.sort{ $0.date > $1.date }
-        
         transactionsByDate.removeAll()
         sectionDates.removeAll()
         
-        for transaction in transactions {
-            let calendar = Calendar.current
-            let date = calendar.startOfDay(for: transaction.date)
+        transactions.forEach { transaction in
+            let date = Calendar.current.startOfDay(for: transaction.date)
             
             if transactionsByDate[date] == nil {
                 transactionsByDate[date] = [transaction]
@@ -49,7 +47,7 @@ final class TransactionsList {
     }
     
     private func getTotalBalance() {
-        refillTotal = transactions.filter{ $0.sign == .refill}.reduce(0, { $0 + (Int($1.sum) ?? 0) })
+        refillTotal = transactions.filter{ $0.sign == .refill }.reduce(0, { $0 + (Int($1.sum) ?? 0) })
         debitTotal = transactions.filter{ $0.sign == .debit }.reduce(0, { $0 + (Int($1.sum) ?? 0) })
         balanceTotal = refillTotal - debitTotal
     }

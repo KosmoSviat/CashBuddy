@@ -8,13 +8,6 @@
 import UIKit
 
 final class HistoryViewController: UITableViewController {
-    // MARK: - GUI variables
-    private lazy var backgroundImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "backgroundImage")
-        image.contentMode = .scaleAspectFill
-        return image
-    }()
     
     // MARK: - Properties
     private var dataSource = TransactionsList.shared
@@ -26,11 +19,12 @@ final class HistoryViewController: UITableViewController {
         registerObserver()
     }
     
+    // MARK: - Methods
     private func setupUI() {
         tableView.backgroundColor = .sBack
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
-        tableView.clipsToBounds = false
+        tableView.clipsToBounds = true
         tableView.register(TransactionTableViewCell.self,
                            forCellReuseIdentifier: "TransactionTableViewCell")
     }
@@ -85,10 +79,12 @@ extension HistoryViewController {
 // MARK: - Observer
 extension HistoryViewController {
     private func registerObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateData),
-                                               name: NSNotification.Name("Update"), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateData),
+                                               name: NSNotification.Name("Update"),
+                                               object: nil)
     }
-
+    
     @objc
     private func updateData() {
         dataSource.getTransactions()

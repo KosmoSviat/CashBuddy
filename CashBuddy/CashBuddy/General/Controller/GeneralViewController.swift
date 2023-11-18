@@ -22,36 +22,42 @@ final class GeneralViewController: UIViewController {
     private lazy var balanceContainerView = UIView()
     private lazy var balanceBackgroundView = configureBackgroundView()
     private lazy var balanceTitleLabel = configureLabel(text: "balance".localized.uppercased(),
-                                                        fontSize: 25, textAlignment: .left, shadows: true)
+                                                        fontSize: 25,
+                                                        textAlignment: .left,
+                                                        shadows: true)
     private lazy var hideBalanceButton = configureButtonWithImage(imageSystemName: "eye",
-                                                              shadows: true, selector: #selector(hideBalanceAction))
-    private lazy var balanceNumberLabel = configureLabel(text: "", fontSize: 25, textAlignment: .left, shadows: true)
+                                                                  selector: #selector(hideBalanceAction))
+    private lazy var balanceNumberLabel = configureLabel(text: "",
+                                                         fontSize: 25,
+                                                         textAlignment: .left,
+                                                         shadows: true)
     
     // MARK: TransactionView
     private lazy var transactionContainerView = UIView()
     private lazy var transactionBackgroundView = configureBackgroundView()
     private lazy var transactionSumTextField = configureTextField(placeholderText: "sum".localized)
     private lazy var typePaymentButton = configureButtonWithImage(imageSystemName: "creditcard.and.123",
-                                                              shadows: true, selector: #selector(changeTypePayment))
+                                                                  selector: #selector(changeTypePayment))
     private lazy var stackCategory: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalSpacing
         return stack
     }()
-    private lazy var foodCategoryButton = configureButtonWithImage(imageSystemName: "takeoutbag.and.cup.and.straw", shadows: true, selector: #selector(selectCategory))
+    private lazy var foodCategoryButton = configureButtonWithImage(imageSystemName: "takeoutbag.and.cup.and.straw",
+                                                                   selector: #selector(selectCategory))
     private lazy var transportCategoryButton = configureButtonWithImage(imageSystemName: "car",
-                                                                    shadows: true, selector: #selector(selectCategory))
+                                                                        selector: #selector(selectCategory))
     private lazy var medicineCategoryButton = configureButtonWithImage(imageSystemName: "cross",
-                                                                   shadows: true, selector: #selector(selectCategory))
+                                                                       selector: #selector(selectCategory))
     private lazy var entertainmentCategoryButton = configureButtonWithImage(imageSystemName: "gamecontroller",
-                                                                        shadows: true, selector: #selector(selectCategory))
+                                                                            selector: #selector(selectCategory))
     private lazy var clothCategoryButton = configureButtonWithImage(imageSystemName: "tshirt",
-                                                                shadows: true, selector: #selector(selectCategory))
+                                                                    selector: #selector(selectCategory))
     private lazy var householdCategoryButton = configureButtonWithImage(imageSystemName: "sofa",
-                                                                    shadows: true, selector: #selector(selectCategory))
+                                                                        selector: #selector(selectCategory))
     private lazy var rentCategoryButton = configureButtonWithImage(imageSystemName: "house",
-                                                               shadows: true, selector: #selector(selectCategory))
+                                                                   selector: #selector(selectCategory))
     private lazy var stackTransactionButton: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -59,36 +65,96 @@ final class GeneralViewController: UIViewController {
         stack.spacing = CGFloat(indentValue10)
         return stack
     }()
-    private lazy var refillButton = configureTransactionButton(title: "refill".localized, selector: #selector(plusButtonAction))
-    private lazy var debitButton = configureTransactionButton(title: "debit".localized, selector: #selector(minusButtonAction))
+    private lazy var refillButton = configureTransactionButton(title: "refill".localized,
+                                                               selector: #selector(plusButtonAction))
+    private lazy var debitButton = configureTransactionButton(title: "debit".localized,
+                                                              selector: #selector(minusButtonAction))
     
     // MARK: StatisticView
     private lazy var statisticsContainerView = UIView()
     private lazy var statisticsBackgroundView = configureBackgroundView()
     private lazy var statisticsTitleLabel = configureLabel(text: "statistics".localized.uppercased(),
-                                                           fontSize: 25, textAlignment: .left, shadows: true)
-    private lazy var refillTotalLabel = configureLabel(text: "",fontSize: 20, textAlignment: .left, shadows: false)
-    private lazy var debitTotalLabel = configureLabel(text: "", fontSize: 20, textAlignment: .left, shadows: false)
-    private lazy var foodStatisticLabel = configureLabel(text: "Food".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var foodSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+                                                           fontSize: 25,
+                                                           textAlignment: .left,
+                                                           shadows: true)
+    private lazy var refillTotalLabel = configureLabel(text: "",
+                                                       fontSize: 20,
+                                                       textAlignment: .left,
+                                                       shadows: false)
+    private lazy var debitTotalLabel = configureLabel(text: "",
+                                                      fontSize: 20,
+                                                      textAlignment: .left,
+                                                      shadows: false)
+    
+    private lazy var foodStatisticLabel = configureLabel(text: "Food".localized,
+                                                         fontSize: 18,
+                                                         textAlignment: .left,
+                                                         shadows: false)
+    private lazy var foodSumStatisticLabel = configureLabel(text: "",
+                                                            fontSize: 18,
+                                                            textAlignment: .right,
+                                                            shadows: false)
     private lazy var foodProgressView = configureCategoryProgressView(category: .food)
-    private lazy var transportStatisticLabel = configureLabel(text: "Transport".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var transportSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+    
+    
+    private lazy var transportStatisticLabel = configureLabel(text: "Transport".localized,
+                                                              fontSize: 18,
+                                                              textAlignment: .left,
+                                                              shadows: false)
+    private lazy var transportSumStatisticLabel = configureLabel(text: "",
+                                                                 fontSize: 18,
+                                                                 textAlignment: .right,
+                                                                 shadows: false)
     private lazy var transportProgressView = configureCategoryProgressView(category: .transport)
-    private lazy var entertainmentStatisticLabel = configureLabel(text: "Entertainment".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var entertainmentSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+    
+    private lazy var entertainmentStatisticLabel = configureLabel(text: "Entertainment".localized,
+                                                                  fontSize: 18,
+                                                                  textAlignment: .left,
+                                                                  shadows: false)
+    private lazy var entertainmentSumStatisticLabel = configureLabel(text: "",
+                                                                     fontSize: 18,
+                                                                     textAlignment: .right,
+                                                                     shadows: false)
     private lazy var entertainmentProgressView = configureCategoryProgressView(category: .entertainment)
-    private lazy var medicineStatisticLabel = configureLabel(text: "Medicine".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var medicineSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+    
+    private lazy var medicineStatisticLabel = configureLabel(text: "Medicine".localized,
+                                                             fontSize: 18,
+                                                             textAlignment: .left,
+                                                             shadows: false)
+    private lazy var medicineSumStatisticLabel = configureLabel(text: "",
+                                                                fontSize: 18,
+                                                                textAlignment: .right,
+                                                                shadows: false)
     private lazy var medicineProgressView = configureCategoryProgressView(category: .medicine)
-    private lazy var householdStatisticLabel = configureLabel(text: "Household".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var householdSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+    
+    private lazy var householdStatisticLabel = configureLabel(text: "Household".localized,
+                                                              fontSize: 18,
+                                                              textAlignment: .left,
+                                                              shadows: false)
+    private lazy var householdSumStatisticLabel = configureLabel(text: "",
+                                                                 fontSize: 18,
+                                                                 textAlignment: .right,
+                                                                 shadows: false)
     private lazy var householdProgressView = configureCategoryProgressView(category: .household)
-    private lazy var clothStatisticLabel = configureLabel(text: "Cloth".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var clothSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+    
+    private lazy var clothStatisticLabel = configureLabel(text: "Cloth".localized,
+                                                          fontSize: 18,
+                                                          textAlignment: .left,
+                                                          shadows: false)
+    private lazy var clothSumStatisticLabel = configureLabel(text: "",
+                                                             fontSize: 18,
+                                                             textAlignment: .right,
+                                                             shadows: false)
     private lazy var clothProgressView = configureCategoryProgressView(category: .cloth)
-    private lazy var rentStatisticLabel = configureLabel(text: "Rent".localized, fontSize: 18, textAlignment: .left, shadows: false)
-    private lazy var rentSumStatisticLabel = configureLabel(text: "", fontSize: 18, textAlignment: .right, shadows: false)
+    
+    private lazy var rentStatisticLabel = configureLabel(text: "Rent".localized,
+                                                         fontSize: 18,
+                                                         textAlignment: .left,
+                                                         shadows: false)
+    private lazy var rentSumStatisticLabel = configureLabel(text: "",
+                                                            fontSize: 18,
+                                                            textAlignment: .right,
+                                                            shadows: false)
     private lazy var rentProgressView = configureCategoryProgressView(category: .rent)
     
     // MARK: - Properties
@@ -129,6 +195,7 @@ final class GeneralViewController: UIViewController {
     private func hideOrShowBalance() {
         guard let isHide = UserDefaults.hideBalanceSetting?.bool(forKey: "balanceIsHide") else { return }
         balanceIsHide = isHide
+        
         if balanceIsHide {
             hideBalanceButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
             balanceNumberLabel.text = "****"
@@ -148,11 +215,7 @@ final class GeneralViewController: UIViewController {
     
     @objc
     private func hideBalanceAction() {
-        if balanceIsHide {
-            UserDefaults.hideBalanceSetting?.set(false, forKey: "balanceIsHide")
-        } else {
-            UserDefaults.hideBalanceSetting?.set(true, forKey: "balanceIsHide")
-        }
+        UserDefaults.hideBalanceSetting?.set(!balanceIsHide, forKey: "balanceIsHide")
         hideOrShowBalance()
     }
     
@@ -212,13 +275,17 @@ final class GeneralViewController: UIViewController {
     
     private func saveTransaction(sign: TransactionType, typePayment: PaymentType) {
         guard let sumInt = Int(transactionSumTextField.text ?? "0"), sumInt >= 1 else { return }
-        let transaction = Transaction(sign: sign, sum: String(sumInt), typePayment: typePayment,
-                                      categoryTransaction: selectedCategoryTransaction, date: Date())
+        let transaction = Transaction(sign: sign,
+                                      sum: String(sumInt),
+                                      typePayment: typePayment,
+                                      categoryTransaction: selectedCategoryTransaction,
+                                      date: Date())
         TransactionPersistent.save(transaction)
         
         transactionSumTextField.resignFirstResponder()
         transactionSumTextField.text = ""
-        
+        selectedCategoryTransaction = .defaultCategory
+        updateCategoryButtonAppearance()
         hideOrShowBalance()
         setStatistics()
     }
@@ -269,19 +336,16 @@ final class GeneralViewController: UIViewController {
         return label
     }
     
-    private func configureButtonWithImage(imageSystemName: String, shadows: Bool, selector: Selector) -> UIButton {
+    private func configureButtonWithImage(imageSystemName: String, selector: Selector) -> UIButton {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: imageSystemName), for: .normal)
         button.tintColor = .white
         button.imageView?.contentMode = .scaleAspectFit
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 1
+        button.layer.shadowRadius = 3
         button.addTarget(self, action: selector, for: .touchUpInside)
-        
-        if shadows {
-            button.layer.shadowColor = UIColor.black.cgColor
-            button.layer.shadowOffset = CGSize(width: 2, height: 2)
-            button.layer.shadowOpacity = 1
-            button.layer.shadowRadius = 3
-        }
         return button
     }
     
@@ -328,13 +392,14 @@ final class GeneralViewController: UIViewController {
         view.addSubview(scrollView)
         
         scrollView.addSubview(containerScrollView)
-        containerScrollView.addSubviews([balanceBackgroundView, balanceContainerView,transactionBackgroundView,
-                                         transactionContainerView, statisticsBackgroundView, statisticsContainerView])
+        containerScrollView.addSubviews([balanceBackgroundView, balanceContainerView,
+                                         transactionBackgroundView, transactionContainerView,
+                                         statisticsBackgroundView, statisticsContainerView])
         
         balanceContainerView.addSubviews([balanceTitleLabel, hideBalanceButton, balanceNumberLabel])
         
         transactionContainerView.addSubviews([transactionSumTextField, typePaymentButton, stackCategory, stackTransactionButton])
-        stackCategory.addArrangedSubviews([foodCategoryButton, transportCategoryButton,entertainmentCategoryButton,
+        stackCategory.addArrangedSubviews([foodCategoryButton, transportCategoryButton, entertainmentCategoryButton,
                                            medicineCategoryButton, householdCategoryButton, clothCategoryButton, rentCategoryButton])
         stackTransactionButton.addArrangedSubviews([refillButton, debitButton])
         
@@ -366,9 +431,7 @@ final class GeneralViewController: UIViewController {
         }
         
         balanceBackgroundView.snp.makeConstraints { make in
-            make.centerY.equalTo(balanceContainerView.snp.centerY)
-            make.leading.trailing.equalToSuperview().inset(indentValue10)
-            make.height.equalTo(balanceContainerView.snp.height)
+            make.edges.equalTo(balanceContainerView)
         }
         
         balanceTitleLabel.snp.makeConstraints { make in
@@ -393,17 +456,15 @@ final class GeneralViewController: UIViewController {
         }
         
         transactionBackgroundView.snp.makeConstraints { make in
-            make.centerY.equalTo(transactionContainerView.snp.centerY)
-            make.leading.trailing.equalToSuperview().inset(indentValue10)
-            make.height.equalTo(transactionContainerView.snp.height)
+            make.edges.equalTo(transactionContainerView)
         }
-
+        
         transactionSumTextField.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(indentValue20)
             make.trailing.equalTo(typePaymentButton.snp.leading).offset(-indentValue10)
             make.height.equalTo(heightValue)
         }
-
+        
         typePaymentButton.snp.makeConstraints { make in
             make.centerY.equalTo(transactionSumTextField.snp.centerY)
             make.trailing.equalToSuperview().inset(indentValue20)
@@ -429,9 +490,7 @@ final class GeneralViewController: UIViewController {
         }
         
         statisticsBackgroundView.snp.makeConstraints { make in
-            make.centerY.equalTo(statisticsContainerView.snp.centerY)
-            make.leading.trailing.equalToSuperview().inset(indentValue10)
-            make.height.equalTo(statisticsContainerView.snp.height)
+            make.edges.equalTo(statisticsContainerView)
         }
         
         statisticsTitleLabel.snp.makeConstraints { make in
@@ -566,7 +625,8 @@ final class GeneralViewController: UIViewController {
 // MARK: - Keyboard events
 extension GeneralViewController {
     func hideKeyboardWhenTappedAround() {
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        let recognizer = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(recognizer)
     }
     
@@ -576,16 +636,22 @@ extension GeneralViewController {
     }
     
     func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     func unregisterForKeyboardNotification() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification,
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
                                                   object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification,
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
                                                   object: nil)
     }
     
@@ -606,7 +672,8 @@ extension GeneralViewController {
 extension GeneralViewController {
     private func registerObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateData),
-                                               name: NSNotification.Name("Update"), object: nil)
+                                               name: NSNotification.Name("Update"),
+                                               object: nil)
     }
     
     @objc

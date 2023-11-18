@@ -20,10 +20,10 @@ final class TabBarController: UITabBarController {
     private func setupViewControllers() {
         viewControllers = [setupNavigationController(rootViewController: GeneralViewController(),
                                                      title: "general".localized.uppercased(),
-                                      image: UIImage(systemName: "creditcard")),
-            setupNavigationController(rootViewController: HistoryViewController(),
-                                      title: "history".localized.uppercased(),
-                                      image: UIImage(systemName: "list.bullet.rectangle"))]
+                                                     image: UIImage(systemName: "creditcard")),
+                           setupNavigationController(rootViewController: HistoryViewController(),
+                                                     title: "history".localized.uppercased(),
+                                                     image: UIImage(systemName: "list.bullet.rectangle"))]
     }
     
     private func setupNavigationController(rootViewController: UIViewController, title: String, image: UIImage?) -> UINavigationController {

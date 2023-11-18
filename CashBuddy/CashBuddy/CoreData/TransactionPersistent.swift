@@ -15,8 +15,10 @@ final class TransactionPersistent {
     
     // MARK: - Methods
     static func save(_ transaction: Transaction) {
-        guard let description = NSEntityDescription.entity(forEntityName: "TransactionEntity", in: context) else { return }
-        let entity = TransactionEntity(entity: description, insertInto: context)
+        guard let description = NSEntityDescription.entity(forEntityName: "TransactionEntity",
+                                                           in: context) else { return }
+        let entity = TransactionEntity(entity: description,
+                                       insertInto: context)
         entity.sign = transaction.sign.rawValue
         entity.sum = transaction.sum
         entity.date = transaction.date
