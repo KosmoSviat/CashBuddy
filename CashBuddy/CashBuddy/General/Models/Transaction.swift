@@ -13,6 +13,23 @@ struct Transaction {
     let typePayment: PaymentType
     let categoryTransaction: CategoryTransaction
     let date: Date
+
+    struct BluePrint {
+        var int: Int?
+        var category: Category?
+        var paymentMethod: PM?
+    }
+
+    enum Category: String {
+        case food = "Food"
+        case transport = "Transport"
+        case medicine = "Medicine"
+        case entertainment = "Entertainment"
+        case cloth = "Cloth"
+        case household = "Household"
+        case rent = "Rent"
+        case defaultCategory = "Not selected"
+    }
 }
 
 enum TransactionType: String {

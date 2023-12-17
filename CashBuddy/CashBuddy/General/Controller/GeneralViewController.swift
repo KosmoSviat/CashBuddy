@@ -9,7 +9,9 @@ import UIKit
 import SnapKit
 
 final class GeneralViewController: UIViewController {
-    
+
+    let store: AppStore
+
     // MARK: - GUI variables
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -175,6 +177,11 @@ final class GeneralViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+
+        store.$state.sink { _ in
+            updateUI()
+        }
+
         registerObserver()
         hideKeyboardWhenTappedAround()
     }

@@ -27,6 +27,7 @@
 		64EC94082AAB3A6F008996A1 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC94072AAB3A6F008996A1 /* Transaction.swift */; };
 		64EC940A2AAB3B9C008996A1 /* TransactionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC94092AAB3B9C008996A1 /* TransactionsList.swift */; };
 		64EC940D2AAB3D63008996A1 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC940C2AAB3D63008996A1 /* TransactionTableViewCell.swift */; };
+		8A486E452B2F46F6001BA9D7 /* code-review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486E442B2F46F6001BA9D7 /* code-review.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		64EC94072AAB3A6F008996A1 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		64EC94092AAB3B9C008996A1 /* TransactionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsList.swift; sourceTree = "<group>"; };
 		64EC940C2AAB3D63008996A1 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		8A486E442B2F46F6001BA9D7 /* code-review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "code-review.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		6459AE262AA5E64700C1FC42 /* CashBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				8A486E442B2F46F6001BA9D7 /* code-review.swift */,
 				64D9EBCC2AAE550D001C9344 /* Application */,
 				6407FB702AA773460046691A /* General */,
 				6407FB712AA7734B0046691A /* History */,
@@ -271,6 +274,7 @@
 				64D04C102AACA3E900311675 /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				6459AE412AA5EA2700C1FC42 /* HistoryViewController.swift in Sources */,
 				64EC940D2AAB3D63008996A1 /* TransactionTableViewCell.swift in Sources */,
+				8A486E452B2F46F6001BA9D7 /* code-review.swift in Sources */,
 				64D9EBCE2AAE5892001C9344 /* UIColor + Ex.swift in Sources */,
 				64D20F6E2AACEB6C001ED43A /* Date + Ex.swift in Sources */,
 				64EC94082AAB3A6F008996A1 /* Transaction.swift in Sources */,
